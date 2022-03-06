@@ -1,0 +1,13 @@
+.container {
+  background-color: aqua;
+}
+
+.logos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(400px, 1fr));
+  grid-template-rows: repeat(2, minmax(400px, 1fr));
+  grid-gap: 50px;
+}
+
+.logo {
+}
