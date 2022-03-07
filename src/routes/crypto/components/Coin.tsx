@@ -12,7 +12,12 @@ const Coin: React.FC<CoinProps> = ({ index, coinData }) => {
   const [selectCoinData, setSelectCoinData] = useState();
 
   const updateCurrentCoinData = async () => {
-    const data = await (await fetch(``)).json();
+    const data = await (
+      await fetch(`https://api.coinpaprika.com/v1/ticker/${coinId}`)
+    ).json();
+
+    console.log(data);
+
     setSelectCoinData(data);
   };
 

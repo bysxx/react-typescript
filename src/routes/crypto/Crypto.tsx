@@ -30,7 +30,7 @@ function Crypto() {
       ) : (
         <div className={"coins"}>
           {index.map((i) => (
-            <Coin index={i} coinData={cryptoData} />
+            <Coin key={i} index={i} coinData={cryptoData} />
           ))}
         </div>
       )}
