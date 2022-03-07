@@ -20,12 +20,12 @@ const Logo: React.FC<LogoProps> = ({ url, imgURL }) => (
 const Main: React.FC = () => (
   <div className={"container"}>
     <div className={"logos"}>
-      <Logo url="/crypto" imgURL={`${publicUrl}/img/word.png`} />
-      <Logo url="/wordie" imgURL={`${publicUrl}/img/word.png`} />
-      <Logo url="/wordie" imgURL={`${publicUrl}/img/word.png`} />
-      <Logo url="/wordie" imgURL={`${publicUrl}/img/word.png`} />
-      <Logo url="/wordie" imgURL={`${publicUrl}/img/word.png`} />
-      <Logo url="/wordie" imgURL={`${publicUrl}/img/word.png`} />
+      <Logo url="/crypto" imgURL={`${publicUrl}/img/bitcoin.png`} />
+      <Logo url="/wordie" imgURL={`${publicUrl}/img/coming-soon.png`} />
+      <Logo url="/wordie" imgURL={`${publicUrl}/img/coming-soon.png`} />
+      <Logo url="/wordie" imgURL={`${publicUrl}/img/coming-soon.png`} />
+      <Logo url="/wordie" imgURL={`${publicUrl}/img/coming-soon.png`} />
+      <Logo url="/wordie" imgURL={`${publicUrl}/img/coming-soon.png`} />
     </div>
   </div>
 );

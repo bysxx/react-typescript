@@ -1,0 +1,10 @@
+.Nav {
+  display: flex;
+  height: 60px;
+}
+
+.Icon {
+  height: 60px;
+  width: 60px;
+  margin-left: 20px;
+}

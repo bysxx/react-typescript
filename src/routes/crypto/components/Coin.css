@@ -1,5 +1,21 @@
+.nocoin {
+  background-color: lightblue;
+  width: 100%;
+  height: 100%;
+}
+
 .coin {
   background-color: lightblue;
+  width: 100%;
+  height: 100%;
+  font-size: 25px;
+  font-weight: 300;
+  transition: background-color 0.5s linear, transform 0.5s linear;
+}
+
+.coin:hover {
+  background-color: lightcoral;
+  transform: scale(1.1);
 }
 
 .coinSelect {
@@ -7,4 +23,9 @@
 }
 
 .coinContents {
+  padding-left: 5px;
+  width: 100%;
+  height: 100%;
+  font-size: 25px;
+  font-weight: 300;
 }
