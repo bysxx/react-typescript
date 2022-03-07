@@ -5,7 +5,7 @@
   justify-content: center;
 }
 
-.logos {
+.coins {
   margin-top: 50px;
   padding: 50px;
   width: 60%;
@@ -13,21 +13,4 @@
   grid-template-columns: repeat(3, minmax(200px, 1fr));
   grid-template-rows: repeat(2, minmax(200px, 1fr));
   grid-gap: 50px;
-}
-
-.logoContainer {
-  background-color: lightblue;
-  padding: 36px;
-  border-radius: 5px;
-  text-align: center;
-}
-
-.logoImg {
-  width: 100px;
-  height: 100px;
-  transition: all 0.5s linear;
-}
-
-.logoImg:hover {
-  transform: scale(1.2);
 }
