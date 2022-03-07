@@ -1,25 +1,38 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import "./Coin.css";
 
-export interface CoinProps {
+interface CoinProps {
+  index: number;
   coinData: { id: string }[];
 }
 
-const Coin: React.FC<CoinProps> = ({ coinData }) => {
-  const [currentCoin, setCurrentCoin] = useState("");
+const Coin: React.FC<CoinProps> = ({ index, coinData }) => {
+  const [coinId, setCoinId] = useState("");
+  const [selectCoinData, setSelectCoinData] = useState();
+
+  const updateCurrentCoinData = async () => {
+    const data = await (await fetch(``)).json();
+    setSelectCoinData(data);
+  };
+
+  useEffect(() => {
+    updateCurrentCoinData();
+  }, [coinId]);
 
   const onChangeOption = (event: any) => {
-    setCurrentCoin(event.target.value);
+    setCoinId(event.target.value);
   };
 
   return (
     <div className={"coin"}>
+      <div>{index}.</div>
       <select className={"coinSelect"} onChange={onChangeOption}>
         {coinData.map((data: { id: string }) => (
           <option key={data.id}>{`${data.id}`}</option>
         ))}
       </select>
-      {currentCoin === "" ? <div>골라요</div> : <div>{currentCoin}</div>}
+      {coinId === "" ? <div>Please Select Your Coin</div> : <div>{coinId}</div>}
     </div>
   );
 };
