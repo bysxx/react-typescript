@@ -30,6 +30,8 @@
 
 .resetButton {
   position: absolute;
-  right: 5px;
-  bottom: 5px;
+  width: 36px;
+  height: 36px;
+  right: -18px;
+  top: -18px;
 }

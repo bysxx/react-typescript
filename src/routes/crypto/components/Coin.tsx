@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import "./Coin.css";
 
 const SAVED_COIN = "savedCoin";
+const publicUrl = process.env.PUBLIC_URL;
 
 interface CoinProps {
   index: number;
@@ -81,9 +82,11 @@ const Coin: React.FC<CoinProps> = ({ index, coinsData }) => {
               BTC
             </div>
           </div>
-          <button className={"resetButton"} onClick={onClickReset}>
-            Reset
-          </button>
+          <img
+            className={"resetButton"}
+            src={`${publicUrl}/img/close.png`}
+            onClick={onClickReset}
+          />
         </div>
       )}
     </div>

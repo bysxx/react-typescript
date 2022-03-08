@@ -18,6 +18,7 @@
 @media screen and (max-width: 1090px) {
   .logos {
     grid-template-columns: 1fr;
+    grid-template-rows: none;
     width: 100%;
   }
 }
