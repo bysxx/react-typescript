@@ -49,7 +49,7 @@ const Coin: React.FC<CoinProps> = ({ index, coinsData }) => {
     setCoinId(event.target.value);
   };
 
-  const onClickCoin = () => {
+  const onClickReset = () => {
     setCoinId("");
   };
 
@@ -67,7 +67,7 @@ const Coin: React.FC<CoinProps> = ({ index, coinsData }) => {
           <div>Please Search Your Coin</div>
         </div>
       ) : (
-        <div className={"coin"} onClick={onClickCoin}>
+        <div className={"coin"}>
           <div className={"coinTitle"}>Name: {coinData.name}</div>
           <div>
             <div>
@@ -81,6 +81,9 @@ const Coin: React.FC<CoinProps> = ({ index, coinsData }) => {
               BTC
             </div>
           </div>
+          <button className={"resetButton"} onClick={onClickReset}>
+            Reset
+          </button>
         </div>
       )}
     </div>
