@@ -1,31 +1,28 @@
-.nocoin {
-  background-color: lightblue;
-  width: 100%;
-  height: 100%;
-}
-
-.coin {
-  background-color: lightblue;
-  width: 100%;
-  height: 100%;
-  font-size: 25px;
-  font-weight: 300;
+.coinContainer {
+  background-color: #f0edcc;
+  padding: 10px;
+  border-radius: 5px;
   transition: background-color 0.5s linear, transform 0.5s linear;
 }
 
-.coin:hover {
-  background-color: lightcoral;
+.coinContainer:hover {
   transform: scale(1.1);
 }
 
-.coinSelect {
-  width: 100%;
+.closeButton {
+  position: relative;
+  top: -15px;
 }
 
-.coinContents {
-  padding-left: 5px;
-  width: 100%;
-  height: 100%;
-  font-size: 25px;
+.nocoin {
+}
+
+.coin {
+  font-size: 20px;
   font-weight: 300;
+  word-wrap: break-word;
+}
+
+.coinTitle {
+  border-bottom: 1px solid black;
 }

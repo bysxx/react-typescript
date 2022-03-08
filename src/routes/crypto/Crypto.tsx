@@ -22,7 +22,7 @@ function Crypto() {
   }, []);
 
   return (
-    <div className={"container"}>
+    <div className={"cryptoContainer"}>
       {loading ? (
         <div className={"loader"}>
           <span>Loading...</span>

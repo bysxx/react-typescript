@@ -54,27 +54,32 @@ const Coin: React.FC<CoinProps> = ({ index, coinsData }) => {
   };
 
   return (
-    <div>
+    <div className={"coinContainer"}>
       {coinData === null ? (
         <div className={"nocoin"}>
-          <select className={"coinSelect"} onChange={onChangeOption}>
+          <input type="text" list="list" onChange={onChangeOption} />
+          <datalist id="list">
             <option>Select Your Coin</option>
             {coinsData.map((data: { id: string }) => (
-              <option key={data.id}>{`${data.id}`}</option>
+              <option key={data.id} value={data.id} />
             ))}
-          </select>
-          <div>Please Select Your Coin</div>
+          </datalist>
+          <div>Please Search Your Coin</div>
         </div>
       ) : (
         <div className={"coin"} onClick={onClickCoin}>
-          <div>Name: {coinData.name}</div>
+          <div className={"coinTitle"}>Name: {coinData.name}</div>
           <div>
-            Price(USD):{Math.round(parseFloat(coinData.price_usd) * 100) / 100}$
-          </div>
-          <div>
-            Price(BTC):
-            {Math.round(parseFloat(coinData.price_btc) * 100000000) / 100000000}
-            BTC
+            <div>
+              Price(USD):
+              {Math.round(parseFloat(coinData.price_usd) * 100) / 100}$
+            </div>
+            <div>
+              Price(BTC):
+              {Math.round(parseFloat(coinData.price_btc) * 100000000) /
+                100000000}
+              BTC
+            </div>
           </div>
         </div>
       )}

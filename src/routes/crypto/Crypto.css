@@ -1,13 +1,15 @@
-.container {
+.cryptoContainer {
   display: flex;
   width: 100%;
   height: 100%;
   justify-content: center;
+  background-color: #02343f;
 }
 
 .loader {
   width: 100%;
   height: 100vh;
+  color: #f0edcc;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +17,7 @@
 }
 
 .coins {
-  margin-top: 50px;
+  margin: 50px auto;
   padding: 50px;
   width: 60%;
   display: grid;

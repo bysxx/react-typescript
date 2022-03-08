@@ -17,17 +17,22 @@
 
 .logoContainer {
   background-color: lightblue;
-  padding: 36px;
   border-radius: 5px;
   text-align: center;
+  transition: all 0.5s linear;
+  text-decoration: none;
+}
+
+.logoContainer:hover {
+  transform: scale(1.1);
 }
 
 .logoImg {
-  width: 100px;
-  height: 100px;
-  transition: all 0.5s linear;
+  margin-top: 20px;
 }
 
-.logoImg:hover {
-  transform: scale(1.2);
+.logoTitle {
+  color: black;
+  font-size: 25px;
+  font-weight: 300;
 }
