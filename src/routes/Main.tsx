@@ -11,15 +11,15 @@ interface LogoProps {
 }
 
 const Logo: React.FC<LogoProps> = ({ url, imgURL, title }) => (
-  <Link className={"logoContainer"} to={url}>
-    <img className={"logoImg"} src={imgURL} />
-    <div className={"logoTitle"}>{title}</div>
+  <Link className={"main_icon"} to={url}>
+    <img className={"main_iconImg"} src={imgURL} />
+    <div className={"main_iconTitle"}>{title}</div>
   </Link>
 );
 
 const Main: React.FC = () => (
   <div className={"container"}>
-    <div className={"logos"}>
+    <div className={"main_icons"}>
       <Logo
         url="/crypto"
         imgURL={`${publicUrl}/img/bitcoin.png`}

@@ -10,11 +10,6 @@
   transform: scale(1.1);
 }
 
-.closeButton {
-  position: relative;
-  top: -15px;
-}
-
 .nocoin {
 }
 
@@ -24,11 +19,11 @@
   word-wrap: break-word;
 }
 
-.coinTitle {
+.coin_title {
   border-bottom: 1px solid black;
 }
 
-.resetButton {
+.coin_resetButton {
   position: absolute;
   width: 36px;
   height: 36px;

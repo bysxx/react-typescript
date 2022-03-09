@@ -5,7 +5,7 @@
   justify-content: center;
 }
 
-.logos {
+.main_icons {
   margin-top: 50px;
   padding: 50px;
   width: 60%;
@@ -16,14 +16,14 @@
 }
 
 @media screen and (max-width: 1090px) {
-  .logos {
+  .main_icons {
     grid-template-columns: 1fr;
     grid-template-rows: none;
     width: 100%;
   }
 }
 
-.logoContainer {
+.main_icon {
   background-color: lightblue;
   border-radius: 5px;
   text-align: center;
@@ -31,15 +31,15 @@
   text-decoration: none;
 }
 
-.logoContainer:hover {
+.main_icon:hover {
   transform: scale(1.1);
 }
 
-.logoImg {
+.main_iconImg {
   margin-top: 20px;
 }
 
-.logoTitle {
+.main_iconTitle {
   color: black;
   font-size: 25px;
   font-weight: 300;

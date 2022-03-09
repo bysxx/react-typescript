@@ -6,11 +6,11 @@ const publicUrl = process.env.PUBLIC_URL;
 
 function Nav() {
   return (
-    <div className={"Nav"}>
+    <div className={"nav"}>
       <Link to={"/"}>
-        <img className={"Icon"} src={`${publicUrl}/img/home.png`}></img>
+        <img className={"nav_icon"} src={`${publicUrl}/img/home.png`}></img>
       </Link>
-      <div className={"Title"}>Baek's Web</div>
+      <div className={"nav_title"}>Baek's Web</div>
     </div>
   );
 }

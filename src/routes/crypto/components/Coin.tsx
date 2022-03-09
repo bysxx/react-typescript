@@ -69,7 +69,7 @@ const Coin: React.FC<CoinProps> = ({ index, coinsData }) => {
         </div>
       ) : (
         <div className={"coin"}>
-          <div className={"coinTitle"}>Name: {coinData.name}</div>
+          <div className={"coin_title"}>Name: {coinData.name}</div>
           <div>
             <div>
               Price(USD):
@@ -83,7 +83,7 @@ const Coin: React.FC<CoinProps> = ({ index, coinsData }) => {
             </div>
           </div>
           <img
-            className={"resetButton"}
+            className={"coin_resetButton"}
             src={`${publicUrl}/img/close.png`}
             onClick={onClickReset}
           />

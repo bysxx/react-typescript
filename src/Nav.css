@@ -1,16 +1,16 @@
-.Nav {
+.nav {
   display: flex;
   height: 60px;
   border-bottom: 1px solid black;
 }
 
-.Icon {
+.nav_icon {
   height: 50px;
   width: 50px;
   margin: 5px;
 }
 
-.Title {
+.nav_title {
   margin: 5px;
   font-size: 40px;
   font-weight: 300;
