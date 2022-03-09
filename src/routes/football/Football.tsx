@@ -2,34 +2,44 @@ import { useEffect, useState } from "react";
 
 const API_KEY = process.env.REACT_APP_FOOTBALL_API_KEY;
 
-interface FootballDataProps {}
+interface FootballDataProps {
+  response: {
+    league: {
+      id: number;
+      name: string;
+      type: string;
+    };
+  }[];
+}
 
 function Football() {
-  const [footballData, setFootballData] = useState<Promise<any>>();
+  const [footballData, setFootballData] = useState<FootballDataProps>(null);
 
   const getFootballData = async (endpoint: string) => {
-    const data = await fetch(`https://v3.football.api-sports.io/${endpoint}`, {
-      method: "GET",
-      headers: {
-        "x-rapidapi-key": API_KEY,
-        "x-rapidapi-host": "v3.football.api-sports.io",
-      },
-      redirect: "follow",
-    });
+    const data = await (
+      await fetch(`https://v3.football.api-sports.io/${endpoint}`, {
+        method: "GET",
+        headers: {
+          "x-rapidapi-key": API_KEY,
+          "x-rapidapi-host": "v3.football.api-sports.io",
+        },
+      })
+    ).json();
 
-    const json = data.json();
-
-    console.log(json);
-    setFootballData(json);
+    setFootballData(data);
   };
 
   useEffect(() => {
-    getFootballData("teams/seasons?team=33");
+    getFootballData("leagues");
   }, []);
 
   return (
     <div>
-      <div>{footballData}</div>
+      {footballData === null ? (
+        <div>Loading..</div>
+      ) : (
+        <div>{footballData.response[0].league.name} </div>
+      )}
     </div>
   );
 }
