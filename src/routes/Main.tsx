@@ -26,9 +26,9 @@ const Main: React.FC = () => (
         title="Bitcoin"
       />
       <Logo
-        url="/soon"
-        imgURL={`${publicUrl}/img/coming-soon.png`}
-        title="Soon"
+        url="/football"
+        imgURL={`${publicUrl}/img/football.png`}
+        title="football"
       />
       <Logo
         url="/soon"
