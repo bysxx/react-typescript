@@ -4,8 +4,12 @@ const API_KEY = process.env.REACT_APP_FOOTBALL_API_KEY;
 
 interface FootballDataProps {
   response: {
+    country: {
+      name: string;
+    };
     league: {
       id: number;
+      logo: string;
       name: string;
       type: string;
     };
@@ -38,7 +42,17 @@ function Football() {
       {footballData === null ? (
         <div>Loading..</div>
       ) : (
-        <div>{footballData.response[0].league.name} </div>
+        footballData.response
+          .filter(
+            (value) => value.league.id <= 150 && value.league.type == "League"
+          )
+          .map((value) => (
+            <div key={value.league.id}>
+              <img src={value.league.logo} />
+              <div>{`Name: ${value.league.name}`}</div>
+              <div>{`Type: ${value.league.type}`}</div>
+            </div>
+          ))
       )}
     </div>
   );
