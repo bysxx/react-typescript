@@ -4,6 +4,7 @@ import Nav from "./Nav";
 import Main from "./routes/Main";
 import Crypto from "./routes/crypto/Crypto";
 import Football from "./routes/football/Football";
+import Antd from "./routes/antd/Antd";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Switch>
           <Route path="/football" component={Football} />
           <Route path="/crypto" component={Crypto} />
+          <Route path="/antd" component={Antd} />
           <Route path="/" component={Main} />
         </Switch>
       </Router>

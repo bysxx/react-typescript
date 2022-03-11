@@ -16,7 +16,7 @@ interface CoinDataProps {
   price_btc: string;
 }
 
-const Coin: React.FC<CoinProps> = ({ index, coinsData }) => {
+const Coin = ({ index, coinsData }: CoinProps) => {
   const [coinId, setCoinId] = useState("");
   const [coinData, setCoinData] = useState<CoinDataProps>(null);
 
