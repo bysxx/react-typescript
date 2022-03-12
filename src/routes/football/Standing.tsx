@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import "./Standing.css";
+import "./Football.css";
+import { useStore } from "./FootballData";
 
 const API_KEY = process.env.REACT_APP_FOOTBALL_API_KEY;
 const currentSeason: number = 2021;
@@ -17,9 +18,10 @@ type Props = {
   id: number;
 };
 
-const Standing = ({ id }: Props) => {
+const Standing = () => {
   const [standingData, setStandingData] = useState<StandingDataProps[]>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const { currentLeagueId } = useStore();
 
   const getFootballData = async (id: number) => {
     setLoading(true);
@@ -42,8 +44,8 @@ const Standing = ({ id }: Props) => {
   };
 
   useEffect(() => {
-    getFootballData(id);
-  }, [id]);
+    getFootballData(currentLeagueId);
+  }, [currentLeagueId]);
 
   return (
     <div className={"standing_container"}>
