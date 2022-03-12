@@ -1,62 +1,38 @@
 import { useEffect, useState } from "react";
 import create from "zustand";
+import Standing from "./Standing";
+import "./Football.css";
 
 const API_KEY = process.env.REACT_APP_FOOTBALL_API_KEY;
 
-interface FootballDataProps {
-  response: {
-    country: {
-      name: string;
-    };
-    league: {
-      id: number;
-      logo: string;
-      name: string;
-      type: string;
-    };
-  }[];
-}
+const leagues: { id: number; name: string }[] = [
+  { id: 39, name: "Premier League" },
+  { id: 78, name: "Bundesliga 1" },
+  { id: 94, name: "Primeira Liga" },
+  { id: 135, name: "Serie A" },
+];
 
-function Football() {
-  const [footballData, setFootballData] = useState<FootballDataProps>(null);
-
-  const getFootballData = async (endpoint: string) => {
-    const data = await (
-      await fetch(`https://v3.football.api-sports.io/${endpoint}`, {
-        method: "GET",
-        headers: {
-          "x-rapidapi-key": API_KEY,
-          "x-rapidapi-host": "v3.football.api-sports.io",
-        },
-      })
-    ).json();
-
-    setFootballData(data);
-  };
-
-  useEffect(() => {
-    getFootballData("leagues");
-  }, []);
+const Football = () => {
+  const [selectedLeagueId, setSelectedLeagueId] = useState(leagues[0].id);
 
   return (
-    <div>
-      {footballData === null ? (
-        <div>Loading..</div>
-      ) : (
-        footballData.response
-          .filter(
-            (value) => value.league.id <= 150 && value.league.type == "League"
-          )
-          .map((value) => (
-            <div key={value.league.id}>
-              <img src={value.league.logo} />
-              <div>{`Name: ${value.league.name}`}</div>
-              <div>{`Type: ${value.league.type}`}</div>
-            </div>
-          ))
-      )}
+    <div className={"football_container"}>
+      <div className={"football_buttons"}>
+        {leagues.map((item) => (
+          <button
+            className={"football_button"}
+            key={item.id}
+            onClick={(e) => {
+              setSelectedLeagueId(item.id);
+            }}
+          >
+            {item.name}
+          </button>
+        ))}
+      </div>
+      <Standing id={selectedLeagueId} />
     </div>
   );
-}
+};
 
 export default Football;

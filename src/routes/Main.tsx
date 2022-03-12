@@ -4,6 +4,15 @@ import "./Main.css";
 
 const publicUrl = process.env.PUBLIC_URL;
 
+const results: string[] = [
+  "crypto",
+  "football",
+  "soon",
+  "soon",
+  "soon",
+  "soon",
+];
+
 interface LogoProps {
   url: string;
   imgURL: string;
@@ -20,36 +29,14 @@ const Logo: React.FC<LogoProps> = ({ url, imgURL, title }) => (
 const Main: React.FC = () => (
   <div className={"container"}>
     <div className={"main_icons"}>
-      <Logo
-        url="/crypto"
-        imgURL={`${publicUrl}/img/bitcoin.png`}
-        title="Bitcoin"
-      />
-      <Logo
-        url="/football"
-        imgURL={`${publicUrl}/img/football.png`}
-        title="football"
-      />
-      <Logo
-        url="/soon"
-        imgURL={`${publicUrl}/img/coming-soon.png`}
-        title="Soon"
-      />
-      <Logo
-        url="/soon"
-        imgURL={`${publicUrl}/img/coming-soon.png`}
-        title="Soon"
-      />
-      <Logo
-        url="/soon"
-        imgURL={`${publicUrl}/img/coming-soon.png`}
-        title="Soon"
-      />
-      <Logo
-        url="/soon"
-        imgURL={`${publicUrl}/img/coming-soon.png`}
-        title="Soon"
-      />
+      {results.map((result, index) => (
+        <Logo
+          key={index}
+          url={`/${result}`}
+          imgURL={`${publicUrl}/img/${result}.png`}
+          title={result}
+        />
+      ))}
     </div>
   </div>
 );
