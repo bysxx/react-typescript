@@ -10,6 +10,9 @@ function Nav() {
       <Link to={"/"}>
         <img className={"nav_icon"} src={`${publicUrl}/img/home.png`}></img>
       </Link>
+      <a href="https://github.com/bysxx">
+        <img className={"nav_icon"} src={`${publicUrl}/img/github.png`} />
+      </a>
       <div className={"nav_title"}>Baek's Web</div>
     </div>
   );

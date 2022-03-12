@@ -5,20 +5,34 @@
 
 /* Football SideBar */
 .football_sidebar {
-  background-color: beige;
   height: 100%;
+  border-right: 1px solid black;
+  padding-right: 5px;
+  cursor: pointer;
 }
 
 .sidebar_button {
   width: 100%;
   height: 100px;
   display: block;
+  font-size: 40px;
+  font-weight: 100;
+  background-color: #f0edcc;
+}
+
+.sidebar_selectedButton {
+  width: 100%;
+  height: 100px;
+  display: block;
+  background-color: #02343f;
+  font-size: 40px;
+  color: white;
 }
 
 /* Standing */
 .standing_container {
   padding: 10px;
-  background-color: white;
+  background-color: #eff3f7;
 }
 
 .standing_teams {
@@ -37,6 +51,7 @@
 .standing_team {
   padding: 10px;
   border: 1px solid black;
+  background-color: white;
   text-align: center;
   transition: all 0.5s linear;
   box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),

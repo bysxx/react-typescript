@@ -21,9 +21,9 @@ type Props = {
 const Standing = () => {
   const [standingData, setStandingData] = useState<StandingDataProps[]>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const { currentLeagueId } = useStore();
+  const { currentLeagueId, setId } = useStore();
 
-  const getFootballData = async (id: number) => {
+  const getStandingData = async (id: number) => {
     setLoading(true);
 
     const data = await (
@@ -44,7 +44,7 @@ const Standing = () => {
   };
 
   useEffect(() => {
-    getFootballData(currentLeagueId);
+    getStandingData(currentLeagueId);
   }, [currentLeagueId]);
 
   return (
