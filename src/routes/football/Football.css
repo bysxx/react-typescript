@@ -58,6 +58,16 @@
     0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
 }
 
+.standing_team_champions {
+  background-color: lightblue;
+}
+.standing_team_europa {
+  background-color: lightgreen;
+}
+.standing_team_relegate {
+  background-color: lightcoral;
+}
+
 .standing_team:hover {
   transform: scale(1.1);
 }

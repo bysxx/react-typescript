@@ -8,6 +8,11 @@ const currentSeason: number = 2021;
 interface StandingDataProps {
   rank: number;
   points: number;
+  all: {
+    win: number;
+    draw: number;
+    lose: number;
+  };
   team: {
     name: string;
     logo: string;
@@ -21,7 +26,11 @@ type Props = {
 const Standing = () => {
   const [standingData, setStandingData] = useState<StandingDataProps[]>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const { currentLeagueId, setId } = useStore();
+  const { currentLeagueId, leagues } = useStore();
+
+  useEffect(() => {
+    getStandingData(currentLeagueId);
+  }, [currentLeagueId]);
 
   const getStandingData = async (id: number) => {
     setLoading(true);
@@ -43,9 +52,21 @@ const Standing = () => {
     setLoading(false);
   };
 
-  useEffect(() => {
-    getStandingData(currentLeagueId);
-  }, [currentLeagueId]);
+  const getStandingClass = (rank: number) => {
+    const currentLeague = leagues.find(
+      (league) => currentLeagueId === league.id
+    );
+
+    if (rank <= currentLeague.champions) {
+      return "standing_team standing_team_champions";
+    } else if (rank <= currentLeague.europa) {
+      return "standing_team standing_team_europa";
+    } else if (rank <= currentLeague.relegate) {
+      return "standing_team ";
+    } else {
+      return "standing_team standing_team_relegate";
+    }
+  };
 
   return (
     <div className={"standing_container"}>
@@ -54,11 +75,12 @@ const Standing = () => {
       ) : (
         <div className={"standing_teams"}>
           {standingData.map((item) => (
-            <div key={item.rank} className={"standing_team"}>
+            <div key={item.rank} className={getStandingClass(item.rank)}>
               <img className={"standing_team_logo"} src={item.team.logo} />
               <div className={"standing_team_info"}>
                 <div>{`${item.rank}. ${item.team.name}`}</div>
                 <div>{`Points: ${item.points}`}</div>
+                <div>{`${item.all.win}/${item.all.draw}/${item.all.lose}`}</div>
               </div>
             </div>
           ))}
