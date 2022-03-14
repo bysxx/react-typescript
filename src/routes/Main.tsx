@@ -10,7 +10,7 @@ const results: string[] = [
   "soon",
   "soon",
   "soon",
-  "soon",
+  "test",
 ];
 
 interface LogoProps {
