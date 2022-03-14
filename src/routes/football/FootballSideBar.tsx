@@ -1,8 +1,20 @@
+import { log } from "console";
+import { useEffect } from "react";
 import "./Football.css";
 import { useStore } from "./FootballData";
 
+const SAVED_LEAGUEID = "savedLeagueId";
+
 const FootballSideBar = () => {
   const { currentLeagueId, leagues, setId } = useStore();
+
+  useEffect(() => {
+    const loadedLeagueId = localStorage.getItem(SAVED_LEAGUEID);
+
+    if (loadedLeagueId !== null) {
+      setId(Number(loadedLeagueId));
+    }
+  }, []);
 
   return (
     <div className={"football_sidebar"}>
@@ -15,6 +27,7 @@ const FootballSideBar = () => {
           }
           key={item.id}
           onClick={(e) => {
+            localStorage.setItem(SAVED_LEAGUEID, item.id.toString());
             setId(item.id);
           }}
         >
