@@ -1,7 +1,18 @@
 .nav {
   display: flex;
+  justify-content: space-between;
   height: 60px;
   border-bottom: 1px solid black;
+}
+
+.nav_left{
+  display: flex;
+  justify-content: center;
+}
+
+.nav_right{
+  display: flex;
+  justify-content: flex-end;
 }
 
 .nav_icon {

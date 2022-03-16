@@ -7,13 +7,17 @@ const publicUrl = process.env.PUBLIC_URL;
 function Nav() {
   return (
     <div className={'nav'}>
-      <Link to={'/'}>
-        <img className={'nav_icon'} src={`${publicUrl}/img/home.png`}></img>
-      </Link>
-      <a href="https://github.com/bysxx">
-        <img className={'nav_icon'} src={`${publicUrl}/img/github.png`} />
-      </a>
-      <div className={'nav_title'}>Baek's Web</div>
+      <div className={'nav_left'}>
+        <Link to={'/'}>
+          <img className={'nav_icon'} src={`${publicUrl}/img/home.png`}></img>
+        </Link>
+        <div className={'nav_title'}>Baek's Web</div>
+      </div>
+      <div className={'nav_right'}>
+        <a href="https://github.com/bysxx">
+          <img className={'nav_icon'} src={`${publicUrl}/img/github.png`} />
+        </a>
+      </div>
     </div>
   );
 }

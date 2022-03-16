@@ -9,6 +9,7 @@ interface StandingDataProps {
   rank: number;
   points: number;
   all: {
+    played: number;
     win: number;
     draw: number;
     lose: number;
@@ -75,7 +76,7 @@ const Standing = () => {
               <div className={'standing_team_info'}>
                 <div>{`${item.rank}. ${item.team.name}`}</div>
                 <div>{`Points: ${item.points}`}</div>
-                <div>{`${item.all.win}/${item.all.draw}/${item.all.lose}`}</div>
+                <div>{`Played: ${item.all.played} (${item.all.win}/${item.all.draw}/${item.all.lose})`}</div>
               </div>
             </div>
           ))}
