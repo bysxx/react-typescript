@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import "./Crypto.css";
-import Coin from "./components/Coin";
+import React, { useEffect, useState } from 'react';
+import './Crypto.css';
+import Coin from './components/Coin';
 
 function Crypto() {
   const [cryptoData, setCryptoData] = useState([]);
@@ -9,9 +9,7 @@ function Crypto() {
   const [index] = useState([1, 2, 3, 4, 5, 6]);
 
   const getCoinData = async () => {
-    const data = await (
-      await fetch("https://api.coinpaprika.com/v1/tickers")
-    ).json();
+    const data = await (await fetch('https://api.coinpaprika.com/v1/tickers')).json();
 
     setLoading(false);
     setCryptoData(data);
@@ -22,13 +20,13 @@ function Crypto() {
   }, []);
 
   return (
-    <div className={"cryptoContainer"}>
+    <div className={'cryptoContainer'}>
       {loading ? (
-        <div className={"loader"}>
+        <div className={'loader'}>
           <span>Loading...</span>
         </div>
       ) : (
-        <div className={"coins"}>
+        <div className={'coins'}>
           {index.map((i) => (
             <Coin key={i} index={i} coinsData={cryptoData} />
           ))}

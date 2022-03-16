@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import "./Coin.css";
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+import './Coin.css';
 
-const SAVED_COIN = "savedCoin";
+const SAVED_COIN = 'savedCoin';
 const publicUrl = process.env.PUBLIC_URL;
 
 interface CoinProps {
@@ -17,13 +17,11 @@ interface CoinDataProps {
 }
 
 const Coin = ({ index, coinsData }: CoinProps) => {
-  const [coinId, setCoinId] = useState("");
+  const [coinId, setCoinId] = useState('');
   const [coinData, setCoinData] = useState<CoinDataProps>(null);
 
   const updateCurrentCoinData = async () => {
-    const data = await (
-      await fetch(`https://api.coinpaprika.com/v1/ticker/${coinId}`)
-    ).json();
+    const data = await (await fetch(`https://api.coinpaprika.com/v1/ticker/${coinId}`)).json();
 
     setCoinData(data);
   };
@@ -37,7 +35,7 @@ const Coin = ({ index, coinsData }: CoinProps) => {
   }, []);
 
   useEffect(() => {
-    if (coinId !== "") {
+    if (coinId !== '') {
       updateCurrentCoinData();
     } else {
       setCoinData(null);
@@ -51,13 +49,13 @@ const Coin = ({ index, coinsData }: CoinProps) => {
   };
 
   const onClickReset = () => {
-    setCoinId("");
+    setCoinId('');
   };
 
   return (
-    <div className={"coinContainer"}>
+    <div className={'coinContainer'}>
       {coinData === null ? (
-        <div className={"nocoin"}>
+        <div className={'nocoin'}>
           <input type="text" list="list" onChange={onChangeOption} />
           <datalist id="list">
             <option>Select Your Coin</option>
@@ -68,8 +66,8 @@ const Coin = ({ index, coinsData }: CoinProps) => {
           <div>Please Search Your Coin</div>
         </div>
       ) : (
-        <div className={"coin"}>
-          <div className={"coin_title"}>Name: {coinData.name}</div>
+        <div className={'coin'}>
+          <div className={'coin_title'}>Name: {coinData.name}</div>
           <div>
             <div>
               Price(USD):
@@ -77,16 +75,11 @@ const Coin = ({ index, coinsData }: CoinProps) => {
             </div>
             <div>
               Price(BTC):
-              {Math.round(parseFloat(coinData.price_btc) * 100000000) /
-                100000000}
+              {Math.round(parseFloat(coinData.price_btc) * 100000000) / 100000000}
               BTC
             </div>
           </div>
-          <img
-            className={"coin_resetButton"}
-            src={`${publicUrl}/img/close.png`}
-            onClick={onClickReset}
-          />
+          <img className={'coin_resetButton'} src={`${publicUrl}/img/close.png`} onClick={onClickReset} />
         </div>
       )}
     </div>

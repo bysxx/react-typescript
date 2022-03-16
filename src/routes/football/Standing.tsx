@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import "./Football.css";
-import { useStore } from "./FootballData";
+import { useEffect, useState } from 'react';
+import './Football.css';
+import { useStore } from './FootballData';
 
 const API_KEY = process.env.REACT_APP_FOOTBALL_API_KEY;
 const currentSeason: number = 2021;
@@ -36,16 +36,13 @@ const Standing = () => {
     setLoading(true);
 
     const data = await (
-      await fetch(
-        `https://v3.football.api-sports.io/standings?league=${id}&season=${currentSeason}`,
-        {
-          method: "GET",
-          headers: {
-            "x-rapidapi-key": API_KEY,
-            "x-rapidapi-host": "v3.football.api-sports.io",
-          },
-        }
-      )
+      await fetch(`https://v3.football.api-sports.io/standings?league=${id}&season=${currentSeason}`, {
+        method: 'GET',
+        headers: {
+          'x-rapidapi-key': API_KEY,
+          'x-rapidapi-host': 'v3.football.api-sports.io',
+        },
+      })
     ).json();
 
     setStandingData(data.response[0].league.standings[0]);
@@ -53,31 +50,29 @@ const Standing = () => {
   };
 
   const getStandingClass = (rank: number) => {
-    const currentLeague = leagues.find(
-      (league) => currentLeagueId === league.id
-    );
+    const currentLeague = leagues.find((league) => currentLeagueId === league.id);
 
     if (rank <= currentLeague.champions) {
-      return "standing_team standing_team_champions";
+      return 'standing_team standing_team_champions';
     } else if (rank <= currentLeague.europa) {
-      return "standing_team standing_team_europa";
+      return 'standing_team standing_team_europa';
     } else if (rank <= currentLeague.relegate) {
-      return "standing_team ";
+      return 'standing_team ';
     } else {
-      return "standing_team standing_team_relegate";
+      return 'standing_team standing_team_relegate';
     }
   };
 
   return (
-    <div className={"standing_container"}>
+    <div className={'standing_container'}>
       {loading === true ? (
         <div>Loading..</div>
       ) : (
-        <div className={"standing_teams"}>
+        <div className={'standing_teams'}>
           {standingData.map((item) => (
             <div key={item.rank} className={getStandingClass(item.rank)}>
-              <img className={"standing_team_logo"} src={item.team.logo} />
-              <div className={"standing_team_info"}>
+              <img className={'standing_team_logo'} src={item.team.logo} />
+              <div className={'standing_team_info'}>
                 <div>{`${item.rank}. ${item.team.name}`}</div>
                 <div>{`Points: ${item.points}`}</div>
                 <div>{`${item.all.win}/${item.all.draw}/${item.all.lose}`}</div>

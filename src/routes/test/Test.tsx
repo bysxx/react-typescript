@@ -1,7 +1,7 @@
-import "./Test.css";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../modules/index";
-import { increaseBy, decreaseBy } from "../../modules/valueReducer";
+import './Test.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../modules/index';
+import { increaseBy, decreaseBy } from '../../modules/valueReducer';
 
 const Test = () => {
   const dispatch = useDispatch();
@@ -16,10 +16,10 @@ const Test = () => {
   };
 
   return (
-    <div className={"parent"}>
+    <div className={'parent'}>
       <button onClick={addValue}>+3</button>
       <button onClick={subValue}>-5</button>
-      <div className={"hello"}>{valueReducer.value}</div>
+      <div className={'hello'}>{valueReducer.value}</div>
     </div>
   );
 };
