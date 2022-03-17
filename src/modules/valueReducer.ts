@@ -1,5 +1,4 @@
 import { ActionType, createReducer, createAction } from 'typesafe-actions';
-import { Reducer } from 'react';
 
 export const increaseBy = createAction('value/INCREASE_BY')<number>();
 export const decreaseBy = createAction('value/DECREASE_BY')<number>();
