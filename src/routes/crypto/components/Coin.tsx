@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import './Coin.css';
+import { getRequest } from '../../../libs/axiosManager';
 
 const SAVED_COIN = 'savedCoin';
 const publicUrl = process.env.PUBLIC_URL;
@@ -21,7 +22,7 @@ const Coin = ({ index, coinsData }: CoinProps) => {
   const [coinData, setCoinData] = useState<CoinDataProps>(null);
 
   const updateCurrentCoinData = async () => {
-    const data = await (await fetch(`https://api.coinpaprika.com/v1/ticker/${coinId}`)).json();
+    const data = await getRequest<CoinDataProps>(`https://api.coinpaprika.com/v1/ticker/${coinId}`, undefined);
 
     setCoinData(data);
   };

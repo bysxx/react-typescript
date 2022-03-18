@@ -8,12 +8,11 @@ export const getHeaders = () => {
   return config;
 };
 
-export const getRequest = async <T>(url: string, query?: string): Promise<T> => {
-  const reqQuery = `${query && query.length > 0 ? `?${query}` : ''}`;
-  console.log(`[axiosManager] get: ${url + reqQuery}`);
+export const getRequest = async <T>(url: string, config: any): Promise<T> => {
+  console.log(`[axiosManager] get: ${url}`);
 
-  return axios.get<T>(url + reqQuery, getHeaders()).then((resp) => {
-    console.log(`[axiosManager] get data: ${url + reqQuery}`);
+  return axios.get<T>(url, config).then((resp) => {
+    console.log(`[axiosManager] get data: ${JSON.stringify(resp)}`);
     return resp.data;
   });
 };
