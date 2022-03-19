@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { getRequest } from '../../libs/axiosManager';
 import './Football.css';
 import { useStore } from './FootballData';
 
@@ -20,8 +21,19 @@ interface StandingDataProps {
   };
 }
 
-type Props = {
-  id: number;
+const getConfig = (id: number) => {
+  const config = {
+    headers: {
+      'x-rapidapi-key': API_KEY,
+      'x-rapidapi-host': 'v3.football.api-sports.io',
+    },
+    params: {
+      league: id,
+      season: 2021,
+    },
+  };
+
+  return config;
 };
 
 const Standing = () => {
@@ -36,15 +48,7 @@ const Standing = () => {
   const getStandingData = async (id: number) => {
     setLoading(true);
 
-    const data = await (
-      await fetch(`https://v3.football.api-sports.io/standings?league=${id}&season=${currentSeason}`, {
-        method: 'GET',
-        headers: {
-          'x-rapidapi-key': API_KEY,
-          'x-rapidapi-host': 'v3.football.api-sports.io',
-        },
-      })
-    ).json();
+    const data = await getRequest<any>(`https://v3.football.api-sports.io/standings`, getConfig(id));
 
     setStandingData(data.response[0].league.standings[0]);
     setLoading(false);

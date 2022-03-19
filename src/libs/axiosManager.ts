@@ -9,7 +9,7 @@ export const getHeaders = () => {
 };
 
 export const getRequest = async <T>(url: string, config: any): Promise<T> => {
-  console.log(`[axiosManager] get: ${url}`);
+  console.log(`[axiosManager] get: ${url}, config ${JSON.stringify(config)}`);
 
   return axios.get<T>(url, config).then((resp) => {
     console.log(`[axiosManager] get data: ${JSON.stringify(resp)}`);
