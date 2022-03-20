@@ -1,9 +1,8 @@
-import { log } from "console";
-import { useEffect } from "react";
-import "./Football.css";
-import { useStore } from "./FootballData";
+import { useEffect } from 'react';
+import './Football.css';
+import { useStore } from './FootballData';
 
-const SAVED_LEAGUEID = "savedLeagueId";
+const SAVED_LEAGUEID = 'savedLeagueId';
 
 const FootballSideBar = () => {
   const { currentLeagueId, leagues, setId } = useStore();
@@ -17,14 +16,10 @@ const FootballSideBar = () => {
   }, []);
 
   return (
-    <div className={"football_sidebar"}>
+    <div className={'football_sidebar'}>
       {leagues.map((item) => (
         <button
-          className={
-            currentLeagueId === item.id
-              ? "sidebar_selectedButton"
-              : "sidebar_button"
-          }
+          className={currentLeagueId === item.id ? 'sidebar_selectedButton' : 'sidebar_button'}
           key={item.id}
           onClick={(e) => {
             localStorage.setItem(SAVED_LEAGUEID, item.id.toString());

@@ -6,9 +6,16 @@ import { getRequest } from '../../../libs/axiosManager';
 const SAVED_COIN = 'savedCoin';
 const publicUrl = process.env.PUBLIC_URL;
 
+export interface coinState {
+  id: string;
+  name: string;
+  symbol: string;
+  rank: number;
+}
+
 interface CoinProps {
   index: number;
-  coinsData: { id: string }[];
+  coinsData: coinState[];
 }
 
 interface CoinDataProps {

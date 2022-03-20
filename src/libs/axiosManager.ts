@@ -1,13 +1,5 @@
 import axios from 'axios';
 
-export const getHeaders = () => {
-  const config = {
-    withCredentials: true,
-  };
-
-  return config;
-};
-
 export const getRequest = async <T>(url: string, config: any): Promise<T> => {
   console.log(`[axiosManager] get: ${url}, config ${JSON.stringify(config)}`);
 
@@ -17,10 +9,10 @@ export const getRequest = async <T>(url: string, config: any): Promise<T> => {
   });
 };
 
-export const postRequest = async <T>(url: string, body: any, onError?: (e: any) => void) => {
+export const postRequest = async <T>(url: string, body: any, config: any, onError?: (e: any) => void) => {
   console.log(`[axiosManager] post: ${url}`);
   const result = axios
-    .post<T>(url, body, getHeaders())
+    .post<T>(url, body, config)
     .then((resp) => {
       console.log(`[axiosManager] post data: ${resp}`);
       return resp;

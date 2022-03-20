@@ -4,7 +4,7 @@ import './Football.css';
 import { useStore } from './FootballData';
 
 const API_KEY = process.env.REACT_APP_FOOTBALL_API_KEY;
-const currentSeason: number = 2021;
+const CURRENT_SEASON: number = 2021;
 
 interface StandingDataProps {
   rank: number;
@@ -29,7 +29,7 @@ const getConfig = (id: number) => {
     },
     params: {
       league: id,
-      season: 2021,
+      season: CURRENT_SEASON,
     },
   };
 
