@@ -1,6 +1,5 @@
 .football_container {
-  display: grid;
-  grid-template-columns: 1fr 5fr;
+  display: flex;
 }
 
 /* Football SideBar */
@@ -31,6 +30,8 @@
 
 /* Standing */
 .standing_container {
+  width: 100%;
+  display: block;
   padding: 10px;
   background-color: #eff3f7;
 }
