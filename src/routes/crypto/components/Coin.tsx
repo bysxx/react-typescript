@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import './Coin.css';
 import { getRequest } from '../../../libs/axiosManager';
+import useSWR from 'swr';
 
 const SAVED_COIN = 'savedCoin';
 const publicUrl = process.env.PUBLIC_URL;
+const url = `https://api.coinpaprika.com/v1/ticker/`;
 
 export interface coinState {
   id: string;
@@ -26,43 +28,33 @@ interface CoinDataProps {
 
 const Coin = ({ index, coinsData }: CoinProps) => {
   const [coinId, setCoinId] = useState('');
-  const [coinData, setCoinData] = useState<CoinDataProps>(null);
-
-  const updateCurrentCoinData = async () => {
-    const data = await getRequest<CoinDataProps>(`https://api.coinpaprika.com/v1/ticker/${coinId}`, undefined);
-
-    setCoinData(data);
-  };
+  const [isEmpty, setIsEmpty] = useState<boolean>(true);
+  const { data } = useSWR([url, coinId], () => getRequest<CoinDataProps>(url + coinId, undefined));
 
   useEffect(() => {
     const loadedCoinId = localStorage.getItem(SAVED_COIN + index);
 
     if (loadedCoinId !== null) {
       setCoinId(loadedCoinId);
+      setIsEmpty(false);
     }
   }, []);
 
-  useEffect(() => {
-    if (coinId !== '') {
-      updateCurrentCoinData();
-    } else {
-      setCoinData(null);
-    }
-
-    localStorage.setItem(SAVED_COIN + index, coinId);
-  }, [coinId]);
-
   const onChangeOption = (event: any) => {
+    setIsEmpty(false);
     setCoinId(event.target.value);
+    localStorage.setItem(SAVED_COIN + index, event.target.value);
   };
 
   const onClickReset = () => {
+    setIsEmpty(true);
     setCoinId('');
+    localStorage.removeItem(SAVED_COIN + index);
   };
 
   return (
     <div className={'coinContainer'}>
-      {coinData === null ? (
+      {isEmpty === true ? (
         <div className={'nocoin'}>
           <input type="text" list="list" onChange={onChangeOption} />
           <datalist id="list">
@@ -75,15 +67,15 @@ const Coin = ({ index, coinsData }: CoinProps) => {
         </div>
       ) : (
         <div className={'coin'}>
-          <div className={'coin_title'}>Name: {coinData.name}</div>
+          <div className={'coin_title'}>Name: {data.name}</div>
           <div>
             <div>
               Price(USD):
-              {Math.round(parseFloat(coinData.price_usd) * 100) / 100}$
+              {Math.round(parseFloat(data.price_usd) * 100) / 100}$
             </div>
             <div>
               Price(BTC):
-              {Math.round(parseFloat(coinData.price_btc) * 100000000) / 100000000}
+              {Math.round(parseFloat(data.price_btc) * 100000000) / 100000000}
               BTC
             </div>
           </div>
