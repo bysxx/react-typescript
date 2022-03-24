@@ -6,10 +6,6 @@
   transition: background-color 0.5s linear, transform 0.5s linear;
 }
 
-.coinContainer:hover {
-  transform: scale(1.1);
-}
-
 .nocoin {
 }
 

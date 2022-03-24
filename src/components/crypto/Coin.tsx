@@ -27,34 +27,30 @@ interface CoinDataProps {
 }
 
 const Coin = ({ index, coinsData }: CoinProps) => {
-  const [coinId, setCoinId] = useState('');
-  const [isEmpty, setIsEmpty] = useState<boolean>(true);
-  const { data } = useSWR([url, coinId], () => getRequest<CoinDataProps>(url + coinId, undefined));
+  const [coinId, setCoinId] = useState('null');
+  const { data, error } = useSWR([url, coinId], () => getRequest<CoinDataProps>(url + coinId));
 
   useEffect(() => {
     const loadedCoinId = localStorage.getItem(SAVED_COIN + index);
 
     if (loadedCoinId !== null) {
       setCoinId(loadedCoinId);
-      setIsEmpty(false);
     }
   }, []);
 
   const onChangeOption = (event: any) => {
-    setIsEmpty(false);
     setCoinId(event.target.value);
     localStorage.setItem(SAVED_COIN + index, event.target.value);
   };
 
   const onClickReset = () => {
-    setIsEmpty(true);
-    setCoinId('');
+    setCoinId('null');
     localStorage.removeItem(SAVED_COIN + index);
   };
 
   return (
     <div className={'coinContainer'}>
-      {data ? (
+      {data && !error ? (
         <div className={'coin'}>
           <div className={'coin_title'}>Name: {data.name}</div>
           <div>
@@ -75,8 +71,8 @@ const Coin = ({ index, coinsData }: CoinProps) => {
           <input type="text" list="list" onChange={onChangeOption} />
           <datalist id="list">
             <option>Select Your Coin</option>
-            {coinsData.map((data: { id: string }) => (
-              <option key={data.id} value={data.id} />
+            {coinsData.map((coinData: { id: string }) => (
+              <option key={coinData.id} value={coinData.id} />
             ))}
           </datalist>
           <div>Please Search Your Coin</div>

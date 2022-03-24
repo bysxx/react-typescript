@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getRequest = async <T>(url: string, config: any): Promise<T> => {
+export const getRequest = async <T>(url: string, config?: any, callback?: () => void): Promise<T> => {
   console.log(`[axiosManager] get: ${url}, config ${JSON.stringify(config)}`);
 
   return axios.get<T>(url, config).then((resp) => {

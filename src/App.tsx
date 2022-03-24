@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Nav from './components/Nav';
-import Main from './components/Main';
+import Nav from './components/nav/Nav';
+import Main from './components/main/Main';
 import Crypto from './components/crypto/Crypto';
 import Football from './components/football/Football';
 import Test from './components/test/Test';
