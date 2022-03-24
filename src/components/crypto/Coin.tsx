@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import './Coin.css';
-import { getRequest } from '../../../libs/axiosManager';
+import { getRequest } from '../../libs/axiosManager';
 import useSWR from 'swr';
 
 const SAVED_COIN = 'savedCoin';
@@ -54,18 +54,7 @@ const Coin = ({ index, coinsData }: CoinProps) => {
 
   return (
     <div className={'coinContainer'}>
-      {isEmpty === true ? (
-        <div className={'nocoin'}>
-          <input type="text" list="list" onChange={onChangeOption} />
-          <datalist id="list">
-            <option>Select Your Coin</option>
-            {coinsData.map((data: { id: string }) => (
-              <option key={data.id} value={data.id} />
-            ))}
-          </datalist>
-          <div>Please Search Your Coin</div>
-        </div>
-      ) : (
+      {data ? (
         <div className={'coin'}>
           <div className={'coin_title'}>Name: {data.name}</div>
           <div>
@@ -80,6 +69,17 @@ const Coin = ({ index, coinsData }: CoinProps) => {
             </div>
           </div>
           <img className={'coin_resetButton'} src={`${publicUrl}/img/close.png`} onClick={onClickReset} />
+        </div>
+      ) : (
+        <div className={'nocoin'}>
+          <input type="text" list="list" onChange={onChangeOption} />
+          <datalist id="list">
+            <option>Select Your Coin</option>
+            {coinsData.map((data: { id: string }) => (
+              <option key={data.id} value={data.id} />
+            ))}
+          </datalist>
+          <div>Please Search Your Coin</div>
         </div>
       )}
     </div>

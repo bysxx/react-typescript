@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Nav from './routes/Nav';
-import Main from './routes/Main';
-import Crypto from './routes/crypto/Crypto';
-import Football from './routes/football/Football';
-import Test from './routes/test/Test';
+import Nav from './components/Nav';
+import Main from './components/Main';
+import Crypto from './components/crypto/Crypto';
+import Football from './components/football/Football';
+import Test from './components/test/Test';
 
 function App() {
   return (

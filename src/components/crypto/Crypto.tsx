@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Crypto.css';
-import Coin, { coinState } from './components/Coin';
+import Coin, { coinState } from './Coin';
 import { getRequest } from '../../libs/axiosManager';
 import useSWR from 'swr';
 
@@ -13,14 +13,14 @@ function Crypto() {
   return (
     <div className={'cryptoContainer'}>
       {data ? (
-        <div className={'loader'}>
-          <span>Loading...</span>
-        </div>
-      ) : (
         <div className={'coins'}>
           {indexes.map((i) => (
             <Coin key={i} index={i} coinsData={data} />
           ))}
+        </div>
+      ) : (
+        <div className={'loader'}>
+          <span>Loading...</span>
         </div>
       )}
     </div>
