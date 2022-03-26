@@ -28,7 +28,7 @@ interface CoinDataProps {
 
 const Coin = ({ index, coinsData }: CoinProps) => {
   const [coinId, setCoinId] = useState('null');
-  const { data, error } = useSWR([url, coinId], () => getRequest<CoinDataProps>(url + coinId));
+  const { data, error } = useSWR([url, coinId, index], () => getRequest<CoinDataProps>(url + coinId));
 
   useEffect(() => {
     const loadedCoinId = localStorage.getItem(SAVED_COIN + index);
